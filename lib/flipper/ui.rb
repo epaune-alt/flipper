@@ -44,8 +44,8 @@ module Flipper
       app = ->() { [200, { 'Content-Type' => 'text/html' }, ['']] }
       builder = Rack::Builder.new
       yield builder if block_given?
-      builder.use Rack::Protection
-      builder.use Rack::Protection::AuthenticityToken
+      #builder.use Rack::Protection
+      #builder.use Rack::Protection::AuthenticityToken
       builder.use Rack::MethodOverride
       builder.use Flipper::Middleware::SetupEnv, flipper, env_key: env_key
       builder.use Flipper::Middleware::Memoizer, env_key: env_key
