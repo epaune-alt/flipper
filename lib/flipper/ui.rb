@@ -45,6 +45,14 @@ module Flipper
       builder = Rack::Builder.new
       yield builder if block_given?
       #builder.use Rack::Protection
+      builder.use ::Rack::Protection::FrameOptions
+      builder.use ::Rack::Protection::HttpOrigin
+      builder.use ::Rack::Protection::IPSpoofing
+      builder.use ::Rack::Protection::JsonCsrf
+      #builder.use ::Rack::Protection::PathTraversal
+      #builder.use ::Rack::Protection::RemoteToken
+      #builder.use ::Rack::Protection::SessionHijacking
+      #builder.use ::Rack::Protection::XSSHeader
       #builder.use Rack::Protection::AuthenticityToken
       builder.use Rack::MethodOverride
       builder.use Flipper::Middleware::SetupEnv, flipper, env_key: env_key
