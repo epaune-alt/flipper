@@ -46,18 +46,18 @@ module Flipper
       yield builder if block_given?
       #builder.use Rack::Protection
       # Segur
-      # Falla
       builder.use ::Rack::Protection::FrameOptions
+      # Falla
       #builder.use ::Rack::Protection::IPSpoofing
-      #builder.use ::Rack::Protection::JsonCsrf
-      #builder.use ::Rack::Protection::HttpOrigin
+      builder.use ::Rack::Protection::JsonCsrf
+      builder.use ::Rack::Protection::HttpOrigin
 
       # Desconegut
-      #builder.use ::Rack::Protection::PathTraversal
-      #builder.use ::Rack::Protection::RemoteToken
-      #builder.use ::Rack::Protection::SessionHijacking
-      #builder.use ::Rack::Protection::XSSHeader
-      #builder.use Rack::Protection::AuthenticityToken
+      builder.use ::Rack::Protection::PathTraversal
+      builder.use ::Rack::Protection::RemoteToken
+      builder.use ::Rack::Protection::SessionHijacking
+      builder.use ::Rack::Protection::XSSHeader
+      builder.use Rack::Protection::AuthenticityToken
       builder.use Rack::MethodOverride
       builder.use Flipper::Middleware::SetupEnv, flipper, env_key: env_key
       builder.use Flipper::Middleware::Memoizer, env_key: env_key
