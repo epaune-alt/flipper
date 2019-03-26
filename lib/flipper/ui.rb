@@ -46,9 +46,9 @@ module Flipper
       yield builder if block_given?
       #builder.use Rack::Protection
       builder.use ::Rack::Protection::FrameOptions
-      builder.use ::Rack::Protection::HttpOrigin
       builder.use ::Rack::Protection::IPSpoofing
-      builder.use ::Rack::Protection::JsonCsrf
+      #builder.use ::Rack::Protection::JsonCsrf
+      #builder.use ::Rack::Protection::HttpOrigin
       #builder.use ::Rack::Protection::PathTraversal
       #builder.use ::Rack::Protection::RemoteToken
       #builder.use ::Rack::Protection::SessionHijacking
